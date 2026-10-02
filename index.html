@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101014" />
+    <meta name="description" content="Elaracode engineers high-performance web applications, ROI-driven SEO campaigns, strategic digital marketing, and bespoke cloud solutions for forward-thinking brands." />
+    <meta name="keywords" content="web development, next.js, react, SEO, digital marketing, UI/UX architecture, digital agency, high-performance web" />
+    <meta name="author" content="Elaracode Digital Systems" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Elaracode — Digital Systems & High-Performance Engineering" />
+    <meta property="og:description" content="Elaracode engineers high-performance web applications, ROI-driven SEO campaigns, and bespoke cloud solutions." />
+    <meta property="og:image" content="/hero-showcase.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Elaracode — Digital Systems & High-Performance Engineering" />
+    <meta name="twitter:description" content="Elaracode engineers high-performance web applications, ROI-driven SEO campaigns, and bespoke cloud solutions." />
+    <meta name="twitter:image" content="/hero-showcase.jpg" />
+
+    <title>Elaracode — Digital Systems &amp; High-Performance Engineering</title>
+
+    <!-- Instant Theme Initialization (Prevents Flash) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('elara-theme');
+          var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#f5f0e8] text-[#1a1a1a] antialiased selection:bg-[#ffcc00] selection:text-[#1a1a1a] overflow-x-hidden min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
