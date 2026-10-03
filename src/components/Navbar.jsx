@@ -62,6 +62,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenQuote }) {
           <img
             src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
             alt="Elaracode Logo"
+            className="brand-logo-img"
             style={{
               height: "38px",
               width: "auto",

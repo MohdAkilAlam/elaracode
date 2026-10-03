@@ -39,6 +39,7 @@ export default function Footer({ theme }) {
               <img
                 src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
                 alt="Elaracode Logo"
+                className="brand-logo-img"
                 style={{ height: "36px", width: "auto" }}
               />
             </div>
@@ -64,6 +65,26 @@ export default function Footer({ theme }) {
               <span>elaracode1@gmail.com</span>
             </a>
 
+            <a
+              href="https://wa.me/919990648033?text=Hi%20Elaracode,%20I'd%20like%20to%20discuss%20a%20project"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                color: "#1a1a1a",
+                fontSize: "0.875rem",
+                fontWeight: 700,
+                textDecoration: "none"
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
+              onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: "18px", color: "#25D366" }}>chat</span>
+              <span>WhatsApp: +91-9990648033</span>
+            </a>
+
             {/* Social Channels */}
             <div style={{ marginTop: "0.5rem" }}>
               <SocialButtonsRow compact={true} />
@@ -73,10 +94,15 @@ export default function Footer({ theme }) {
           {/* Capabilities Directory */}
           <div>
             <div style={{ fontSize: "0.8125rem", fontWeight: 800, color: "#1a1a1a", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1.25rem" }}>
-              Capabilities
+              Our Services
             </div>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.75rem", padding: 0 }}>
-              {["Web Development", "Organic SEO", "Digital Marketing", "UI/UX Architecture"].map((link, idx) => (
+              {[
+                "GMB Optimization",
+                "Static Website",
+                "Dynamic Website",
+                "E-Commerce"
+              ].map((link, idx) => (
                 <li key={idx}>
                   <a
                     href="#services"
@@ -103,7 +129,7 @@ export default function Footer({ theme }) {
               Solutions
             </div>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.75rem", padding: 0 }}>
-              {["GBP Optimization", "Cloud IT Infrastructure", "Privacy Protocol", "Terms of Service"].map((link, idx) => (
+              {["Google Maps 3-Pack", "React & Next.js Stacks", "Payment Gateways", "Privacy Protocol"].map((link, idx) => (
                 <li key={idx}>
                   <a
                     href="#services"

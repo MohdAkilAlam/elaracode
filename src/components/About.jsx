@@ -1,5 +1,4 @@
 import React from "react";
-import { SocialButtonsRow } from "./SocialIcons";
 
 export default function About() {
   const pillars = [
@@ -20,6 +19,36 @@ export default function About() {
       title: "Transparency",
       desc: "Direct Slack & git access to your principal engineers. No account manager telephone games.",
       accent: "#0055ff"
+    }
+  ];
+
+  const pipelineStages = [
+    {
+      step: "01",
+      icons: ["settings", "insights"],
+      title: "Initial Diagnostic & Strategy",
+      desc: "Comprehensive architecture audits, high-intent opportunity mapping, and full technical baseline benchmarking.",
+      color: "#ffcc00",
+      calloutTitle: "Vulnerability Scans",
+      calloutBullets: ["Vulnerability Scans", "Database Optimization"]
+    },
+    {
+      step: "02",
+      icons: ["speed", "rocket_launch"],
+      title: "Iterative Performance Tuning",
+      desc: "Deep-core speed audits, headless SSR infrastructure, and precision UX conversion telemetry.",
+      color: "#e63b2e",
+      calloutTitle: "Database Optimization",
+      calloutBullets: ["Database Optimization", "Infrastructure Checks", "Latency Profiling"]
+    },
+    {
+      step: "03",
+      icons: ["shield", "vpn_key"],
+      title: "Final Deployment & Maintenance",
+      desc: "Automated zero-downtime CI/CD pipelines, role-based access security, and round-the-clock SLA telemetry.",
+      color: "#0055ff",
+      calloutTitle: "Production Assurance",
+      calloutBullets: ["Zero-Downtime Rollover", "24/7 SLA Telemetry"]
     }
   ];
 
@@ -147,14 +176,6 @@ export default function About() {
                 </div>
               ))}
             </div>
-
-            {/* Official Social Media Channels */}
-            <div style={{ marginTop: "0.5rem", paddingTop: "1.25rem", borderTop: "2px solid #1a1a1a" }}>
-              <div style={{ fontSize: "0.75rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "#1a1a1a", marginBottom: "0.75rem" }}>
-                Official Social Channels
-              </div>
-              <SocialButtonsRow />
-            </div>
           </div>
 
           {/* Right Column: Standard Operating Telemetry Card */}
@@ -220,121 +241,92 @@ export default function About() {
                 </span>
               </div>
 
-              {/* Progress Metric Bars */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                <div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      fontSize: "0.875rem",
-                      marginBottom: "0.4rem"
-                    }}
-                  >
-                    <span style={{ color: "#1a1a1a", fontWeight: 700 }}>
-                      Lighthouse Performance Baseline
-                    </span>
-                    <span style={{ color: "#1a1a1a", fontFamily: "monospace", fontWeight: 800 }}>
-                      98% Avg
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      height: "10px",
-                      width: "100%",
-                      backgroundColor: "#eee9e0",
-                      border: "2px solid #1a1a1a",
-                      borderRadius: "2px",
-                      overflow: "hidden"
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: "100%",
-                        width: "98%",
-                        backgroundColor: "#ffcc00"
-                      }}
-                    />
-                  </div>
-                </div>
+              {/* Pipeline Timeline from 2nd SS */}
+              <div className="telemetry-pipeline-container">
+                {/* Ambient Wave Graphic on Right */}
+                <svg
+                  className="pipeline-ambient-wave"
+                  viewBox="0 0 100 420"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M 25 0 C 95 80, -20 180, 65 270 C 105 320, 20 370, 50 420"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeOpacity="0.22"
+                  />
+                </svg>
 
-                <div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      fontSize: "0.875rem",
-                      marginBottom: "0.4rem"
-                    }}
-                  >
-                    <span style={{ color: "#1a1a1a", fontWeight: 700 }}>
-                      Organic Ranking Velocity
-                    </span>
-                    <span style={{ color: "#e63b2e", fontFamily: "monospace", fontWeight: 800 }}>
-                      4.2x Industry Standard
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      height: "10px",
-                      width: "100%",
-                      backgroundColor: "#eee9e0",
-                      border: "2px solid #1a1a1a",
-                      borderRadius: "2px",
-                      overflow: "hidden"
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: "100%",
-                        width: "88%",
-                        backgroundColor: "#e63b2e"
-                      }}
-                    />
-                  </div>
-                </div>
+                {/* Pipeline Stages */}
+                <div className="pipeline-stages-list">
+                  {pipelineStages.map((stage, idx) => (
+                    <div key={idx} className="pipeline-stage-row">
+                      {/* Left: Step Info */}
+                      <div className="pipeline-stage-left">
+                        {/* Dual Icons */}
+                        <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", marginBottom: "0.4rem" }}>
+                          {stage.icons.map((iconName, iIdx) => (
+                            <span
+                              key={iIdx}
+                              className="material-symbols-outlined"
+                              style={{ fontSize: "20px", color: stage.color }}
+                            >
+                              {iconName}
+                            </span>
+                          ))}
+                        </div>
 
-                <div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      fontSize: "0.875rem",
-                      marginBottom: "0.4rem"
-                    }}
-                  >
-                    <span style={{ color: "#1a1a1a", fontWeight: 700 }}>
-                      Code Cleanliness &amp; Type Safety
-                    </span>
-                    <span style={{ color: "#0055ff", fontFamily: "monospace", fontWeight: 800 }}>
-                      100% Strict TypeScript
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      height: "10px",
-                      width: "100%",
-                      backgroundColor: "#eee9e0",
-                      border: "2px solid #1a1a1a",
-                      borderRadius: "2px",
-                      overflow: "hidden"
-                    }}
-                  >
-                    <div
-                      style={{
-                        height: "100%",
-                        width: "100%",
-                        backgroundColor: "#0055ff"
-                      }}
-                    />
-                  </div>
+                        <h4 className="pipeline-stage-title">
+                          {stage.title}
+                        </h4>
+                        <p className="pipeline-stage-desc">
+                          {stage.desc}
+                        </p>
+                      </div>
+
+                      {/* Center: Node Dot on Vertical Line */}
+                      <div className="pipeline-stage-center">
+                        <div
+                          className="pipeline-node-dot"
+                          style={{
+                            borderColor: stage.color,
+                            boxShadow: `0 0 10px ${stage.color}50`
+                          }}
+                        >
+                          <div
+                            className="pipeline-node-core"
+                            style={{ backgroundColor: stage.color }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Right: Callout Bubble */}
+                      <div className="pipeline-stage-right">
+                        <div className="pipeline-callout-card">
+                          <div className="pipeline-callout-title" style={{ color: stage.color }}>
+                            {stage.calloutTitle}
+                          </div>
+                          <ul className="pipeline-callout-list">
+                            {stage.calloutBullets.map((bullet, bIdx) => (
+                              <li key={bIdx}>
+                                <span className="pipeline-callout-bullet-dot" style={{ backgroundColor: stage.color }} />
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Founder Micro Quote */}
+              {/* Founder Micro Quote (Preserved from 1st image) */}
               <div
+                className="founder-quote-box"
                 style={{
-                  marginTop: "1.75rem",
+                  marginTop: "2rem",
                   padding: "1.25rem",
                   borderRadius: "var(--radius-md)",
                   backgroundColor: "#f5f0e8",
@@ -342,7 +334,9 @@ export default function About() {
                   boxShadow: "2px 2px 0px #1a1a1a",
                   display: "flex",
                   alignItems: "flex-start",
-                  gap: "0.75rem"
+                  gap: "0.75rem",
+                  position: "relative",
+                  zIndex: 3
                 }}
               >
                 <span className="material-symbols-outlined" style={{ fontSize: "28px", color: "#1a1a1a" }}>
@@ -358,6 +352,231 @@ export default function About() {
       </div>
 
       <style>{`
+        .telemetry-pipeline-container {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          padding: 0.5rem 0;
+        }
+
+        .pipeline-ambient-wave {
+          position: absolute;
+          right: -15px;
+          top: 0;
+          width: 80px;
+          height: 100%;
+          pointer-events: none;
+          z-index: 1;
+          color: #1a1a1a;
+        }
+
+        [data-theme="dark"] .pipeline-ambient-wave {
+          color: #f5f0e8;
+        }
+
+        .pipeline-stages-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1.85rem;
+          position: relative;
+          z-index: 2;
+        }
+
+        .pipeline-stage-row {
+          display: grid;
+          grid-template-columns: 1.15fr 36px 0.95fr;
+          align-items: center;
+          gap: 0.75rem;
+          position: relative;
+        }
+
+        .pipeline-stage-left {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .pipeline-stage-title {
+          font-size: 1.025rem;
+          font-weight: 800;
+          line-height: 1.3;
+          margin-bottom: 0.35rem;
+          font-family: var(--font-display);
+          color: #1a1a1a;
+        }
+
+        .pipeline-stage-desc {
+          font-size: 0.8125rem;
+          line-height: 1.45;
+          color: #4a4a4a;
+        }
+
+        .pipeline-stage-center {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          height: 100%;
+        }
+
+        /* Continuous Vertical Line connecting dots */
+        .pipeline-stage-center::before {
+          content: '';
+          position: absolute;
+          top: -1rem;
+          bottom: -1rem;
+          left: 50%;
+          width: 2px;
+          transform: translateX(-50%);
+          background-color: #d0cbc3;
+          z-index: 1;
+        }
+
+        [data-theme="dark"] .pipeline-stage-center::before {
+          background-color: rgba(255, 255, 255, 0.22) !important;
+        }
+
+        .pipeline-stage-row:first-child .pipeline-stage-center::before {
+          top: 50%;
+        }
+
+        .pipeline-stage-row:last-child .pipeline-stage-center::before {
+          bottom: 50%;
+        }
+
+        /* Horizontal Connector from dot to callout */
+        .pipeline-stage-center::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          right: -0.75rem;
+          top: 50%;
+          height: 2px;
+          background-color: #d0cbc3;
+          z-index: 1;
+        }
+
+        [data-theme="dark"] .pipeline-stage-center::after {
+          background-color: rgba(255, 255, 255, 0.22) !important;
+        }
+
+        .pipeline-node-dot {
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          border: 2px solid;
+          background-color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          z-index: 2;
+          flex-shrink: 0;
+        }
+
+        [data-theme="dark"] .pipeline-node-dot {
+          background-color: #181820 !important;
+        }
+
+        .pipeline-node-core {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+        }
+
+        .pipeline-stage-right {
+          display: flex;
+          align-items: center;
+          position: relative;
+          z-index: 3;
+        }
+
+        .pipeline-callout-card {
+          background-color: rgba(245, 240, 232, 0.95);
+          border: 1.5px solid #1a1a1a;
+          border-radius: var(--radius-md);
+          padding: 0.65rem 0.85rem;
+          box-shadow: 2px 2px 0px #1a1a1a;
+          backdrop-filter: blur(8px);
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        [data-theme="dark"] .pipeline-callout-card {
+          background-color: #20202c !important;
+          border: 1.5px solid #2d2d3a !important;
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .pipeline-callout-title {
+          font-size: 0.75rem;
+          font-weight: 800;
+          margin-bottom: 0.35rem;
+          letter-spacing: 0.02em;
+        }
+
+        .pipeline-callout-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .pipeline-callout-list li {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.72rem;
+          color: #4a4a4a;
+          line-height: 1.35;
+          white-space: nowrap;
+        }
+
+        [data-theme="dark"] .pipeline-callout-list li {
+          color: #a1a1aa !important;
+        }
+
+        .pipeline-callout-bullet-dot {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+
+        /* Dark Theme Support */
+        [data-theme="dark"] .founder-quote-box {
+          background-color: #20202c !important;
+          border-color: #2d2d3a !important;
+          box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        [data-theme="dark"] .founder-quote-box p {
+          color: #d4d4d8 !important;
+        }
+
+        [data-theme="dark"] .founder-quote-box span {
+          color: #ffcc00 !important;
+        }
+
+        [data-theme="dark"] .pipeline-stage-title {
+          color: #f5f0e8 !important;
+        }
+
+        [data-theme="dark"] .pipeline-stage-desc {
+          color: #a1a1aa !important;
+        }
+
+        @media (max-width: 640px) {
+          .pipeline-stage-row {
+            grid-template-columns: 1fr;
+            gap: 0.85rem;
+          }
+          .pipeline-stage-center {
+            display: none;
+          }
+        }
+
         @media (min-width: 1024px) {
           .about-grid {
             grid-template-columns: 1fr 1fr !important;

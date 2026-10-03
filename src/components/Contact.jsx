@@ -1,58 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { SocialButtonsRow } from "./SocialIcons";
+
+const serviceOptions = [
+  "GMB Optimization",
+  "Static Website",
+  "Dynamic Website",
+  "E-Commerce"
+];
 
 export default function Contact({ preselectedService, prefilledBrief, prefilledBudget }) {
   const [formData, setFormData] = useState({
     fullName: "",
     businessEmail: "",
-    budgetRange: "50k-150k",
+    budgetRange: "14999",
     projectDetails: ""
   });
   const [customBudget, setCustomBudget] = useState("");
 
-  const [selectedServices, setSelectedServices] = useState(["Web Development"]);
+  const [selectedServices, setSelectedServices] = useState(["Static Website"]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (preselectedService && !selectedServices.includes(preselectedService)) {
-      setSelectedServices((prev) => [...prev, preselectedService]);
-    }
-  }, [preselectedService]);
+  // Synchronize state with props during render without synchronous setState in useEffect
+  const [prevService, setPrevService] = useState(preselectedService);
+  if (preselectedService && preselectedService !== prevService) {
+    setPrevService(preselectedService);
+    const matched = serviceOptions.find((opt) =>
+      opt.toLowerCase().includes(preselectedService.toLowerCase())
+    ) || preselectedService;
 
-  useEffect(() => {
-    if (prefilledBrief) {
-      setFormData((prev) => ({
-        ...prev,
-        projectDetails: prev.projectDetails ? `${prev.projectDetails}\n\n${prefilledBrief}` : prefilledBrief
-      }));
+    if (!selectedServices.includes(matched)) {
+      setSelectedServices((prev) => [...prev, matched]);
     }
-  }, [prefilledBrief]);
+  }
 
-  useEffect(() => {
-    if (prefilledBudget) {
-      const numeric = parseInt(prefilledBudget.replace(/[^0-9]/g, ""), 10);
-      if (numeric <= 50000) {
-        setFormData((prev) => ({ ...prev, budgetRange: "25k-50k" }));
-      } else if (numeric <= 150000) {
-        setFormData((prev) => ({ ...prev, budgetRange: "50k-150k" }));
-      } else if (numeric <= 350000) {
-        setFormData((prev) => ({ ...prev, budgetRange: "150k-350k" }));
+  const [prevBrief, setPrevBrief] = useState(prefilledBrief);
+  if (prefilledBrief && prefilledBrief !== prevBrief) {
+    setPrevBrief(prefilledBrief);
+    setFormData((prev) => ({
+      ...prev,
+      projectDetails: prev.projectDetails ? `${prev.projectDetails}\n\n${prefilledBrief}` : prefilledBrief
+    }));
+  }
+
+  const [prevBudget, setPrevBudget] = useState(prefilledBudget);
+  if (prefilledBudget && prefilledBudget !== prevBudget) {
+    setPrevBudget(prefilledBudget);
+    const numeric = parseInt(prefilledBudget.replace(/[^0-9]/g, ""), 10);
+    if (!isNaN(numeric)) {
+      if (numeric <= 14999) {
+        setFormData((prev) => ({ ...prev, budgetRange: "14999" }));
+      } else if (numeric <= 34999) {
+        setFormData((prev) => ({ ...prev, budgetRange: "34999" }));
+      } else if (numeric <= 79999) {
+        setFormData((prev) => ({ ...prev, budgetRange: "79999" }));
       } else {
         setFormData((prev) => ({ ...prev, budgetRange: "custom" }));
         setCustomBudget(prefilledBudget.replace(/[^0-9,]/g, ""));
       }
     }
-  }, [prefilledBudget]);
-
-  const serviceOptions = [
-    "Web Development",
-    "Organic SEO",
-    "Digital Marketing",
-    "GBP Optimization",
-    "UI/UX Architecture",
-    "Cloud IT & Maintenance"
-  ];
+  }
 
   const toggleService = (srv) => {
     if (selectedServices.includes(srv)) {
@@ -70,12 +77,14 @@ export default function Contact({ preselectedService, prefilledBrief, prefilledB
       formData.budgetRange === "custom"
         ? (customBudget ? `Custom: ₹${customBudget.replace(/^₹\s*/, "")}` : "Custom Specified Budget")
         : (
-          formData.budgetRange === "25k-50k"
-            ? "₹25,000 – ₹50,000 (Sprint MVP)"
-            : formData.budgetRange === "50k-150k"
-            ? "₹50,000 – ₹1,50,000 (Comprehensive Build / Redesign)"
-            : formData.budgetRange === "150k-350k"
-            ? "₹1,50,000 – ₹3,50,000 (Enterprise Scaling & Full Funnel)"
+          formData.budgetRange === "14999"
+            ? "₹14,999 (GMB / Static Website)"
+            : formData.budgetRange === "34999"
+            ? "₹34,999 (Dynamic Website)"
+            : formData.budgetRange === "79999"
+            ? "₹79,999 (E-Commerce Store)"
+            : formData.budgetRange === "multi"
+            ? "₹1,00,000+ (Multi-Service Package)"
             : formData.budgetRange
         );
 
@@ -246,20 +255,23 @@ export default function Contact({ preselectedService, prefilledBrief, prefilledB
                       width: "44px",
                       height: "44px",
                       borderRadius: "var(--radius-sm)",
-                      backgroundColor: "#ffdad6",
+                      backgroundColor: "#25D366",
                       border: "2px solid #1a1a1a",
+                      boxShadow: "2px 2px 0px #1a1a1a",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: "#e63b2e"
+                      color: "#ffffff"
                     }}
                   >
-                    <span className="material-symbols-outlined" style={{ fontSize: "22px" }}>chat</span>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
                   </div>
                   <div>
                     <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#4a4a4a" }}>Instant WhatsApp</div>
                     <a
-                      href="https://wa.me/"
+                      href="https://wa.me/919990648033?text=Hi%20Elaracode,%20I'd%20like%20to%20discuss%20a%20project"
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
@@ -271,7 +283,7 @@ export default function Contact({ preselectedService, prefilledBrief, prefilledB
                       onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
                       onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
                     >
-                      +1 (415) 890-3240
+                      +91-9990648033
                     </a>
                   </div>
                 </div>
@@ -306,7 +318,7 @@ export default function Contact({ preselectedService, prefilledBrief, prefilledB
                   <div>
                     <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#4a4a4a" }}>Typical Response SLA</div>
                     <div style={{ fontSize: "1rem", fontWeight: 700, color: "#1a1a1a" }}>
-                      Under 2 hours during market hours
+                      Instant via WhatsApp (&lt; 15 mins)
                     </div>
                   </div>
                 </div>
@@ -509,9 +521,10 @@ export default function Contact({ preselectedService, prefilledBrief, prefilledB
                         cursor: "pointer"
                       }}
                     >
-                      <option value="25k-50k">₹25,000 – ₹50,000 (Sprint MVP)</option>
-                      <option value="50k-150k">₹50,000 – ₹1,50,000 (Comprehensive Build / Redesign)</option>
-                      <option value="150k-350k">₹1,50,000 – ₹3,50,000 (Enterprise Scaling &amp; Full Funnel)</option>
+                      <option value="14999">₹14,999 (GMB / Static Website)</option>
+                      <option value="34999">₹34,999 (Dynamic Website)</option>
+                      <option value="79999">₹79,999 (E-Commerce Store)</option>
+                      <option value="multi">₹1,00,000+ (Multi-Service / Custom Package)</option>
                       <option value="custom">Custom Budget (Specify Your Own Amount)</option>
                     </select>
 

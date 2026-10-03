@@ -341,6 +341,10 @@ body, section, header, footer, .luminous-border, .brutal-card, .review-card, but
   text-decoration-color: #ffcc00 !important;
 }
 
+[data-theme="dark"] .brand-logo-img {
+  content: url('/logo-dark.svg') !important;
+}
+
 /* Typography in Dark Mode */
 [data-theme="dark"] h1,
 [data-theme="dark"] h2,
@@ -392,6 +396,7 @@ body, section, header, footer, .luminous-border, .brutal-card, .review-card, but
 [data-theme="dark"] *[style*="background-color: #faf7f2"],
 [data-theme="dark"] *[style*="background-color: rgb(250, 247, 242)"],
 [data-theme="dark"] *[style*="background-color: #eee9e0"],
+[data-theme="dark"] *[style*="background-color: rgb(238, 233, 224)"],
 [data-theme="dark"] *[style*="background-color: #f2ede5"] {
   background-color: #1a1a22 !important;
   border-color: #353545 !important;

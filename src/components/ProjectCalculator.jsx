@@ -1,58 +1,82 @@
 import React, { useState } from "react";
 
 export default function ProjectCalculator({ onApplyEstimate }) {
-  const [projectType, setProjectType] = useState("web-app");
-  const [scale, setScale] = useState("growth");
+  const [projectType, setProjectType] = useState("gmb");
+  const [tier, setTier] = useState("standard");
   const [speed, setSpeed] = useState("standard");
   const [addons, setAddons] = useState({
-    seo: true,
-    tracking: true,
-    sla: false,
-    designSystem: true
+    whatsapp: false,
+    seo: false,
+    domainHosting: false,
+    amc: false
   });
 
   const baseRates = {
-    "web-app": { base: 75000, timeWeeks: 5, roi: "3.5x" },
-    "seo-campaign": { base: 35000, timeWeeks: 4, roi: "4.2x" },
-    "ui-ux-design": { base: 40000, timeWeeks: 4, roi: "2.8x" },
-    "full-suite": { base: 150000, timeWeeks: 8, roi: "5.4x" }
+    "gmb": {
+      title: "GMB Optimization",
+      base: 14999,
+      timeWeeks: 1,
+      roi: "4.5x",
+      tagline: "Google Business Profile & 3-Pack Maps Domination"
+    },
+    "static-website": {
+      title: "Static Website",
+      base: 14999,
+      timeWeeks: 1,
+      roi: "3.2x",
+      tagline: "Ultra-Fast Modern Business Website & Landing Page"
+    },
+    "dynamic-website": {
+      title: "Dynamic Website",
+      base: 34999,
+      timeWeeks: 3,
+      roi: "3.8x",
+      tagline: "Full-Featured Web Platform with CMS & Database"
+    },
+    "ecommerce": {
+      title: "E-Commerce",
+      base: 79999,
+      timeWeeks: 4,
+      roi: "5.2x",
+      tagline: "High-Converting Online Store & Payment Gateway"
+    }
   };
 
-  const scaleMultiplier = {
-    mvp: 0.7,
-    growth: 1.0,
-    enterprise: 1.8
+  const tierMultiplier = {
+    standard: 1.0,
+    growth: 1.2,
+    enterprise: 1.4
   };
 
   const speedMultiplier = {
     standard: 1.0,
-    accelerated: 1.25
+    express: 1.15
   };
 
   const addonPrices = {
-    seo: 15000,
-    tracking: 10000,
-    sla: 12000,
-    designSystem: 18000
+    whatsapp: { label: "WhatsApp Chat & Auto-Alerts", price: 2999, priceDisplay: "+₹2,999" },
+    seo: { label: "Advanced Local Schema & Citations", price: 3999, priceDisplay: "+₹3,999" },
+    domainHosting: { label: "High-Speed Hosting & Domain (1 Yr)", price: 3499, priceDisplay: "+₹3,499" },
+    amc: { label: "1-Year Priority Maintenance SLA", price: 4999, priceDisplay: "+₹4,999" }
   };
 
-  const currentBase = baseRates[projectType];
-  const calculatedBase = currentBase.base * scaleMultiplier[scale] * speedMultiplier[speed];
+  const currentBase = baseRates[projectType] || baseRates["gmb"];
+  const calculatedBase = currentBase.base * tierMultiplier[tier] * speedMultiplier[speed];
   const calculatedAddons = Object.keys(addons).reduce((acc, key) => {
-    return acc + (addons[key] ? addonPrices[key] : 0);
+    return acc + (addons[key] ? addonPrices[key].price : 0);
   }, 0);
 
-  const totalEstimate = Math.round((calculatedBase + calculatedAddons) / 1000) * 1000;
-  const estimatedWeeks = speed === "accelerated"
-    ? Math.max(3, Math.round(currentBase.timeWeeks * (scale === "mvp" ? 0.7 : scale === "enterprise" ? 1.5 : 1) * 0.75))
-    : Math.round(currentBase.timeWeeks * (scale === "mvp" ? 0.7 : scale === "enterprise" ? 1.5 : 1));
+  const totalEstimate = Math.round(calculatedBase + calculatedAddons);
+  const estimatedWeeks = speed === "express"
+    ? Math.max(1, Math.round(currentBase.timeWeeks * (tier === "standard" ? 0.75 : tier === "enterprise" ? 1.25 : 1) * 0.75))
+    : Math.max(1, Math.round(currentBase.timeWeeks * (tier === "standard" ? 1 : tier === "enterprise" ? 1.35 : 1.15)));
 
   const toggleAddon = (key) => {
     setAddons((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const handleApply = () => {
-    const summary = `Selected ${projectType} (${scale} scale, ${speed} pace) with estimated budget ₹${totalEstimate.toLocaleString('en-IN')} across ${estimatedWeeks} weeks.`;
+    const summary = `Selected ${currentBase.title} (${tier} tier, ${speed} pace) with estimated investment ₹${totalEstimate.toLocaleString('en-IN')} across ${estimatedWeeks} week${estimatedWeeks > 1 ? 's' : ''}.`;
     if (onApplyEstimate) {
       onApplyEstimate(summary, `₹${totalEstimate.toLocaleString('en-IN')}`);
     }
@@ -101,10 +125,10 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               marginBottom: "0.75rem"
             }}
           >
-            Instant Scope &amp; Investment Modeler
+            Instant Scope &amp; Pricing Modeler
           </h2>
           <p style={{ fontSize: "1.0625rem", color: "#4a4a4a", lineHeight: 1.6 }}>
-            Select your architectural parameters to calculate realistic delivery timelines, budget brackets, and projected commercial upside.
+            Select your preferred service to instantly calculate exact delivery timelines, transparent pricing, and projected commercial return.
           </p>
         </div>
 
@@ -126,21 +150,32 @@ export default function ProjectCalculator({ onApplyEstimate }) {
             {/* 1. Initiative Type */}
             <div>
               <label style={{ fontSize: "0.875rem", fontWeight: 800, color: "#1a1a1a", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>
-                1. Select Core Initiative
+                1. Select Core Service
               </label>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
                 {[
-                  { id: "web-app", label: "Web Platform / App" },
-                  { id: "seo-campaign", label: "Organic SEO Engine" },
-                  { id: "ui-ux-design", label: "UI/UX & Design System" },
-                  { id: "full-suite", label: "Full Agency Squad" }
+                  { id: "gmb", label: "GMB Optimization", price: "₹14,999" },
+                  { id: "static-website", label: "Static Website", price: "₹14,999" },
+                  { id: "dynamic-website", label: "Dynamic Website", price: "₹34,999" },
+                  { id: "ecommerce", label: "E-Commerce", price: "₹79,999" }
                 ].map((item) => (
                   <button
                     key={item.id}
                     onClick={() => setProjectType(item.id)}
                     className={`calc-select-btn ${projectType === item.id ? "active" : ""}`}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      gap: "0.25rem",
+                      padding: "0.85rem 1rem",
+                      textAlign: "left"
+                    }}
                   >
-                    {item.label}
+                    <span style={{ fontWeight: 800, fontSize: "0.875rem" }}>{item.label}</span>
+                    <span style={{ fontSize: "0.8rem", fontWeight: 700, color: projectType === item.id ? "#1a1a1a" : "#0055ff" }}>
+                      {item.price}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -149,21 +184,29 @@ export default function ProjectCalculator({ onApplyEstimate }) {
             {/* 2. Scale & Complexity */}
             <div>
               <label style={{ fontSize: "0.875rem", fontWeight: 800, color: "#1a1a1a", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>
-                2. Project Scale &amp; Scope
+                2. Package Scope &amp; Tier
               </label>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.75rem" }}>
                 {[
-                  { id: "mvp", label: "Sprint MVP" },
-                  { id: "growth", label: "Growth Build" },
-                  { id: "enterprise", label: "Enterprise Scale" }
+                  { id: "standard", label: "Standard", sub: "Exact Base" },
+                  { id: "growth", label: "Growth", sub: "+20% Scope" },
+                  { id: "enterprise", label: "Enterprise", sub: "+40% Scope" }
                 ].map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => setScale(item.id)}
-                    className={`calc-select-btn ${scale === item.id ? "active" : ""}`}
-                    style={{ textAlign: "center" }}
+                    onClick={() => setTier(item.id)}
+                    className={`calc-select-btn ${tier === item.id ? "active" : ""}`}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: "0.2rem",
+                      padding: "0.75rem 0.5rem",
+                      textAlign: "center"
+                    }}
                   >
-                    {item.label}
+                    <span style={{ fontWeight: 800, fontSize: "0.8125rem" }}>{item.label}</span>
+                    <span style={{ fontSize: "0.7rem", opacity: 0.8, fontWeight: 600 }}>{item.sub}</span>
                   </button>
                 ))}
               </div>
@@ -176,15 +219,24 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               </label>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
                 {[
-                  { id: "standard", label: "Standard Agile Cadence" },
-                  { id: "accelerated", label: "Priority Rush (+25% Speed)" }
+                  { id: "standard", label: "Standard Agile Cadence", sub: "Standard Time" },
+                  { id: "express", label: "Priority Rush (+15%)", sub: "Fast-Track Sprints" }
                 ].map((item) => (
                   <button
                     key={item.id}
                     onClick={() => setSpeed(item.id)}
                     className={`calc-select-btn ${speed === item.id ? "active" : ""}`}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      gap: "0.2rem",
+                      padding: "0.75rem 1rem",
+                      textAlign: "left"
+                    }}
                   >
-                    {item.label}
+                    <span style={{ fontWeight: 800, fontSize: "0.8125rem" }}>{item.label}</span>
+                    <span style={{ fontSize: "0.7rem", opacity: 0.8, fontWeight: 600 }}>{item.sub}</span>
                   </button>
                 ))}
               </div>
@@ -193,36 +245,34 @@ export default function ProjectCalculator({ onApplyEstimate }) {
             {/* 4. Strategic Add-ons */}
             <div>
               <label style={{ fontSize: "0.875rem", fontWeight: 800, color: "#1a1a1a", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>
-                4. Select Strategic Capabilities
+                4. Optional Add-ons
               </label>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
-                {[
-                  { id: "seo", label: "Semantic SEO & Schema", price: "+₹15,000" },
-                  { id: "tracking", label: "GA4 / CAPI Telemetry", price: "+₹10,000" },
-                  { id: "designSystem", label: "Figma Tokenized System", price: "+₹18,000" },
-                  { id: "sla", label: "24/7 Dedicated SLA", price: "+₹12,000/mo" }
-                ].map((addon) => (
-                  <div
-                    key={addon.id}
-                    onClick={() => toggleAddon(addon.id)}
-                    className={`calc-addon-item ${addons[addon.id] ? "active" : ""}`}
-                  >
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                      <span
-                        className="material-symbols-outlined addon-check-icon"
-                        style={{ fontSize: "18px" }}
-                      >
-                        {addons[addon.id] ? "check_box" : "check_box_outline_blank"}
-                      </span>
-                      <span style={{ fontSize: "0.8125rem", fontWeight: 700 }}>
-                        {addon.label}
+                {Object.keys(addonPrices).map((key) => {
+                  const addon = addonPrices[key];
+                  return (
+                    <div
+                      key={key}
+                      onClick={() => toggleAddon(key)}
+                      className={`calc-addon-item ${addons[key] ? "active" : ""}`}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                        <span
+                          className="material-symbols-outlined addon-check-icon"
+                          style={{ fontSize: "18px" }}
+                        >
+                          {addons[key] ? "check_box" : "check_box_outline_blank"}
+                        </span>
+                        <span style={{ fontSize: "0.8125rem", fontWeight: 700 }}>
+                          {addon.label}
+                        </span>
+                      </div>
+                      <span className="addon-price-tag" style={{ fontSize: "0.75rem", fontWeight: 600 }}>
+                        {addon.priceDisplay}
                       </span>
                     </div>
-                    <span className="addon-price-tag" style={{ fontSize: "0.75rem", fontWeight: 600 }}>
-                      {addon.price}
-                    </span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -279,7 +329,7 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               </div>
 
               <p style={{ fontSize: "0.875rem", color: "#4a4a4a", marginTop: "0.75rem", lineHeight: 1.5 }}>
-                Estimated for a fixed-bid sprint deliverables package with full intellectual property ownership.
+                {currentBase.tagline} with full code and intellectual property ownership.
               </p>
 
               {/* Output Cards */}
@@ -293,12 +343,12 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                     boxShadow: "2px 2px 0px #1a1a1a"
                   }}
                 >
-                  <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#4a4a4a" }}>Target Velocity</div>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#4a4a4a" }}>Estimated Velocity</div>
                   <div style={{ fontSize: "1.35rem", fontWeight: 800, color: "#1a1a1a", marginTop: "0.25rem" }}>
-                    {estimatedWeeks} Weeks
+                    {estimatedWeeks} {estimatedWeeks === 1 ? "Week" : "Weeks"}
                   </div>
                   <div style={{ fontSize: "0.75rem", color: "#4a4a4a", marginTop: "0.25rem" }}>
-                    To Production Launch
+                    To Live Deployment
                   </div>
                 </div>
 
@@ -311,12 +361,12 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                     boxShadow: "2px 2px 0px #1a1a1a"
                   }}
                 >
-                  <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#4a4a4a" }}>Historical Upside</div>
+                  <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#4a4a4a" }}>Projected Upside</div>
                   <div style={{ fontSize: "1.35rem", fontWeight: 800, color: "#0055ff", marginTop: "0.25rem" }}>
                     {currentBase.roi} Lift
                   </div>
                   <div style={{ fontSize: "0.75rem", color: "#4a4a4a", marginTop: "0.25rem" }}>
-                    12-Month Traffic/Rev
+                    Inbound Traffic / ROI
                   </div>
                 </div>
               </div>
@@ -324,9 +374,9 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               {/* Included Checklist */}
               <div style={{ marginTop: "1.75rem", display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                 {[
-                  "100% Strict TypeScript & WCAG AA Compliance",
-                  "Direct Principal Architect Slack channel access",
-                  "30-day post-launch hypercare & bug warranty"
+                  "100% Upfront transparent pricing with zero hidden fees",
+                  "Direct Principal Engineer access via WhatsApp & Slack",
+                  "30-day post-launch warranty & complimentary support"
                 ].map((item, idx) => (
                   <div key={idx} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8125rem", color: "#1a1a1a" }}>
                     <span className="material-symbols-outlined" style={{ fontSize: "16px", color: "#1a1a1a" }}>check_circle</span>
