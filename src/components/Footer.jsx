@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SocialButtonsRow } from "./SocialIcons";
 
 export default function Footer({ theme }) {
@@ -62,10 +62,11 @@ export default function Footer({ theme }) {
               onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
             >
               <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>mail</span>
-              <span>elaracode1@gmail.com</span>
+              <span>info@elaracode.com</span>
             </a>
 
             <a
+
               href="https://wa.me/919990648033?text=Hi%20Elaracode,%20I'd%20like%20to%20discuss%20a%20project"
               target="_blank"
               rel="noopener noreferrer"
