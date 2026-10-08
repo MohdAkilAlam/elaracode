@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-# Host
-Host: https://elaracode.com
-
-# Sitemaps
 Sitemap: https://elaracode.com/sitemap.xml
