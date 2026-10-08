@@ -67,7 +67,7 @@ export default function About() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
             gap: "3.5rem",
             alignItems: "center"
           }}
@@ -568,6 +568,9 @@ export default function About() {
         }
 
         @media (max-width: 640px) {
+          .about-grid {
+            gap: 2.25rem !important;
+          }
           .pipeline-stage-row {
             grid-template-columns: 1fr;
             gap: 0.85rem;

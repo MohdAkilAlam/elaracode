@@ -158,13 +158,13 @@ export default function Navbar({ theme, onToggleTheme, onOpenQuote }) {
 
           <a
             href="#contact"
-            className="btn-primary"
+            className="btn-primary nav-start-btn"
             style={{
               padding: "0.65rem 1.3rem",
               fontSize: "0.8125rem"
             }}
           >
-            <span>Start Project</span>
+            <span className="nav-start-text">Start Project</span>
             <span className="material-symbols-outlined" style={{ fontSize: "16px" }}>arrow_forward</span>
           </a>
 
@@ -275,6 +275,22 @@ export default function Navbar({ theme, onToggleTheme, onOpenQuote }) {
       )}
 
       <style>{`
+        @media (max-width: 480px) {
+          .brand-logo-img {
+            height: 30px !important;
+          }
+          .nav-start-btn {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.75rem !important;
+          }
+          .nav-start-text {
+            display: none;
+          }
+          .theme-toggle-btn {
+            width: 36px !important;
+            height: 36px !important;
+          }
+        }
         @media (min-width: 1024px) {
           .desktop-nav {
             display: flex !important;

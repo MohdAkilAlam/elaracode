@@ -8,7 +8,8 @@ export const portfolioItems = [
     description: "Engineered an institutional-grade portfolio portal with real-time WebSockets and sub-50ms render latency.",
     metricValue: "0.38s",
     metricLabel: "Load Speed",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAFSJ2eAimtEZJ06DlWkcNzeHsd8WVlVv-VY8uuQ3WjAYS44h42SVCBKhDO3zmSEZjnLnAcMKthNVvcjGRLTTiaAWYZCGTelhC3LvuzQyH0j23UIOhT9FrQwgxmf-3CWEgh0Q8BhnLVt8B7wdJSTvBSE6lRldfC5l4apxvZMQAfw7go_L9x4j-HrCxL020xOW6gbZb-z-cGO2JbD-2NW9PGmwWmQqgCsaF-y0Igb-FedCKhczWmITJE",
+    image: "/portfolio/aetheria-cloud.webp",
+    fallbackImage: "/portfolio/aetheria-cloud.jpg",
     imageAlt: "Modern dark-mode fintech interface mockup showing cryptocurrency asset distribution and charts",
     details: {
       client: "Quantix Global Financial",
@@ -32,7 +33,8 @@ export const portfolioItems = [
     description: "Total architectural SEO overhaul, programmatic medical schema deployment, and authoritative content cluster scaling.",
     metricValue: "+312%",
     metricLabel: "Organic Inbound",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAwifbrGssCCe9SbqymY62YfhxwjK3XMTckdZzcG2xcgmLHNhnyzFa_ukyOpFLI7QLmMrv1dvYfo4OFNu2w1U0KKR7UFnvlGJcbvPoKsoBA2n3_-Ytrz1fZDYyyMqmQZw5-qLn7-slM7X2M6AJNmX-C38XD3SsAs9PDWNTL3LKHtbkuzXH0lOHnvXcWCLStBcXTqmlBrm9mKrIQX3GeC1EEDiaqKYLrXfT6kw84CGQTnzNwYOdaiWX1",
+    image: "/portfolio/omnihealth-portal.webp",
+    fallbackImage: "/portfolio/omnihealth-portal.jpg",
     imageAlt: "Digital marketing analytics workstation showcasing multi-screen organic SEO search rankings",
     details: {
       client: "OmniHealth Network",
@@ -56,7 +58,8 @@ export const portfolioItems = [
     description: "Consolidated 14 regional locations into automated Google Business Profile engines, generating thousands of qualified local calls.",
     metricValue: "4.9★",
     metricLabel: "900+ Reviews",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA0mlDqHOg6GGcOkXEJ9VULa_nMBP-pnlyjcgxZFsc-n8XWavnM8dKB110tSem3muAIyklQkdmkWuVlBve8A_Wz24pRH14G0mw-DNw-hqDHzKHOAPsoY3CoITd0IX5cAgwKuRUXp_Lcg5r1CHs2fqI1O-e8mXgsaFPrshWV_j8Kn5wCGRXD9er09xBpX8Mw5Oupwl4cOOw0K8lfXQDku6bXNW3x3eek7BZWm66ICxZ3AOEBvCSGxBjS",
+    image: "/portfolio/novus-dental.webp",
+    fallbackImage: "/portfolio/novus-dental.jpg",
     imageAlt: "Smartphone mockup showing Google Maps local business listing ranking #1",
     details: {
       client: "Novus Healthcare Group",
@@ -80,7 +83,8 @@ export const portfolioItems = [
     description: "Designed a multi-cluster GPU observability suite with high-density timeline graphs and instant incident diagnostics.",
     metricValue: "99.8%",
     metricLabel: "Diagnostic Accuracy",
-    image: "https://lh3.googleusercontent.com/aida/AEtjO1X3rJ9xyEzr4ktb6__60gEWbDiWjFQtkBYN_s8kILbkhCbZkq2AySQrb7jUOh3XvoZQ4tFAAVN0vZGVVpGu4-epl3nFNMXc2Trt7YCU907F_WxiJWCV86ioUM4sGeAhWpPJ7VsrwtOyX9Nb1QTTSOftFH-bJ7BPUS7acJqcPz20a2_VT90aQbWkBJlWjtzXlKmc6hc1F4RBw5RblgNp3E-FLJx1-fYEci_Wv7uJZcoyj6X7Iqo2kaoyyGU",
+    image: "/portfolio/synthex-telemetry.webp",
+    fallbackImage: "/portfolio/synthex-telemetry.jpg",
     imageAlt: "Modern cloud infrastructure and AI analytics web application dashboard",
     details: {
       client: "Synthex Autonomous Systems",
@@ -104,7 +108,8 @@ export const portfolioItems = [
     description: "Editorial minimalist digital commerce experience with fluid physics-based transitions and 3D material previews.",
     metricValue: "+148%",
     metricLabel: "Checkout Velocity",
-    image: "https://lh3.googleusercontent.com/aida/AEtjO1W6-1_D8vMzgK0eXBzI7lqIwGVkTo_6NEM0aP_Zn2Ju92mU0kcEiPySml9gSAijLhB3HMaJVg-fQ0_7Oif4ML0sMX7r-ne91YnWaZmsqyMggQocivFo6MpRGSfudq8nIKCQXLrWpsUB-EsbnxQzxI5yuVCBAIPD0rbGqxhpNd5qoCRNxRmoi8bx3HX_1tJRTDrH52G4fk5uTymHGuld-DZ1y7Uf0NlOF7wVP4Dp4AiUTJaXJ91dFcn5jnI",
+    image: "/portfolio/travertine-luxury.webp",
+    fallbackImage: "/portfolio/travertine-luxury.jpg",
     imageAlt: "High-end architectural e-commerce platform on an ultra-thin laptop mockup",
     details: {
       client: "Studio Travertine Milan",
@@ -128,7 +133,8 @@ export const portfolioItems = [
     description: "End-to-end HIPAA compliant patient onboarding, video consultation rooms, and automated electronic health record sync.",
     metricValue: "4.95★",
     metricLabel: "Patient Experience",
-    image: "https://lh3.googleusercontent.com/aida/AEtjO1XRVyqkE8A9-f3eaXSzznYO3N53jCPZse2et73FHKEEbb-joRtfQMFMES9u7aEZm579FRlQ3c3-pHHgbSBYXSNheZ2itbnsU8U3aGhb3zfYaFUbsoszGHkk4MUv9qu1h4wTCKi6TxU3gzfgw89iO3YhQSuzl6iFG_oWuSz32WVGOEfa5P1_IFHALe8m_89dh870lMP2sIqTW35-YWHz1tVq-gIiwEv9nB7gcmA6cesd44Pyhb13EloatSQ",
+    image: "/portfolio/apex-telemedicine.webp",
+    fallbackImage: "/portfolio/apex-telemedicine.jpg",
     imageAlt: "Modern healthcare telemedicine and patient management web application interface",
     details: {
       client: "Apex Health Partners",

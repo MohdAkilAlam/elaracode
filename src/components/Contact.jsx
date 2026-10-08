@@ -139,7 +139,7 @@ export default function Contact({ preselectedService, prefilledBrief, prefilledB
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
             gap: "4rem",
             alignItems: "start"
           }}
@@ -357,6 +357,7 @@ export default function Contact({ preselectedService, prefilledBrief, prefilledB
           {/* Right Column: Intake Form */}
           <div>
             <div
+              className="contact-form-card"
               style={{
                 borderRadius: "var(--radius-lg)",
                 backgroundColor: "#ffffff",
@@ -623,6 +624,20 @@ export default function Contact({ preselectedService, prefilledBrief, prefilledB
       </div>
 
       <style>{`
+        @media (max-width: 768px) {
+          .contact-grid {
+            gap: 2.25rem !important;
+          }
+          .contact-form-card {
+            padding: 1.25rem !important;
+            box-shadow: 4px 4px 0px #1a1a1a !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .contact-form-card {
+            padding: 1rem !important;
+          }
+        }
         @media (min-width: 1024px) {
           .contact-grid {
             grid-template-columns: 0.9fr 1.1fr !important;
