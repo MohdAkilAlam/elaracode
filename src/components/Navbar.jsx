@@ -85,6 +85,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenQuote }) {
             <a
               key={link.href}
               href={link.href}
+              title={`Elaracode ${link.label}`}
               style={{
                 color: "#4a4a4a",
                 textDecoration: "none",
@@ -210,6 +211,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenQuote }) {
             <a
               key={link.href}
               href={link.href}
+              title={`Elaracode ${link.label}`}
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 color: "#1a1a1a",

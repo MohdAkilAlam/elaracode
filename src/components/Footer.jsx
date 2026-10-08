@@ -111,6 +111,7 @@ export default function Footer({ theme }) {
                 <li key={idx}>
                   <a
                     href="#services"
+                    title={`Elaracode ${link}`}
                     style={{ fontSize: "0.875rem", color: "#4a4a4a", textDecoration: "none", fontWeight: 500, transition: "color 0.15s ease" }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "#1a1a1a";
@@ -138,6 +139,7 @@ export default function Footer({ theme }) {
                 <li key={idx}>
                   <a
                     href="#services"
+                    title={`Elaracode ${link} Solution`}
                     style={{ fontSize: "0.875rem", color: "#4a4a4a", textDecoration: "none", fontWeight: 500, transition: "color 0.15s ease" }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "#1a1a1a";
