@@ -55,6 +55,28 @@ export default function Hero() {
         >
           {/* Left Column: Typographic Pitch */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "1.5rem" }}>
+            {/* SEO & Brand Kicker */}
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                padding: "0.35rem 0.85rem",
+                borderRadius: "var(--radius-md)",
+                backgroundColor: "#ffcc00",
+                border: "2px solid #1a1a1a",
+                boxShadow: "2px 2px 0px #1a1a1a",
+                color: "#1a1a1a",
+                fontSize: "0.75rem",
+                fontWeight: 800,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase"
+              }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: "16px" }}>verified</span>
+              ELARACODE · DIGITAL ENGINEERING &amp; SEO
+            </div>
+
             {/* Main Headline */}
             <h1
               style={{
@@ -81,7 +103,7 @@ export default function Hero() {
                 maxWidth: "580px"
               }}
             >
-              Elaracode engineers high-performance web applications, ROI-driven SEO campaigns, strategic digital marketing, and bespoke IT solutions for forward-thinking brands.
+              Elaracode (elaracode.com) engineers high-performance web applications, ROI-driven SEO campaigns, strategic digital marketing, and bespoke IT solutions for forward-thinking brands.
             </p>
 
             {/* CTAs */}

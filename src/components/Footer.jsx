@@ -35,14 +35,18 @@ export default function Footer({ theme }) {
         >
           {/* Brand Info */}
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem", gridColumn: "span 1" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+            <a
+              href="/"
+              aria-label="Elaracode — Home"
+              style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}
+            >
               <img
                 src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
-                alt="Elaracode Logo"
+                alt="Elaracode — Digital Systems & High-Performance Engineering"
                 className="brand-logo-img"
                 style={{ height: "36px", width: "auto" }}
               />
-            </div>
+            </a>
             <p style={{ fontSize: "0.875rem", color: "#4a4a4a", lineHeight: 1.6, maxWidth: "340px" }}>
               High-velocity digital engineering, tactical SEO dominance, and bespoke cloud solutions engineered for enterprise-scale outcomes.
             </p>

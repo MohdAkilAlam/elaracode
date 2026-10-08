@@ -50,7 +50,8 @@ export default function Navbar({ theme, onToggleTheme, onOpenQuote }) {
       >
         {/* Brand Logo */}
         <a
-          href="#"
+          href="/"
+          aria-label="Elaracode — Home"
           style={{
             display: "flex",
             alignItems: "center",
@@ -61,7 +62,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenQuote }) {
         >
           <img
             src={theme === "dark" ? "/logo-dark.svg" : "/logo.svg"}
-            alt="Elaracode Logo"
+            alt="Elaracode — Digital Systems & High-Performance Engineering"
             className="brand-logo-img"
             style={{
               height: "38px",

@@ -1,0 +1,21 @@
+{
+  "name": "Elaracode Digital Systems",
+  "short_name": "Elaracode",
+  "description": "High-performance web applications, ROI-driven SEO campaigns, strategic digital marketing, and bespoke cloud solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#101014",
+  "icons": [
+    {
+      "src": "/brand-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
