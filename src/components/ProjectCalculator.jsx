@@ -135,7 +135,7 @@ export default function ProjectCalculator({ onApplyEstimate }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
             gap: "2.5rem",
             backgroundColor: "#f5f0e8",
             borderRadius: "var(--radius-lg)",
@@ -146,13 +146,13 @@ export default function ProjectCalculator({ onApplyEstimate }) {
           className="calculator-container"
         >
           {/* Controls Column */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem", minWidth: 0 }}>
             {/* 1. Initiative Type */}
             <div>
               <label style={{ fontSize: "0.875rem", fontWeight: 800, color: "#1a1a1a", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>
                 1. Select Core Service
               </label>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
+              <div className="calc-grid-services" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
                 {[
                   { id: "gmb", label: "GMB Optimization", price: "₹14,999" },
                   { id: "static-website", label: "Static Website", price: "₹14,999" },
@@ -169,10 +169,11 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                       alignItems: "flex-start",
                       gap: "0.25rem",
                       padding: "0.85rem 1rem",
-                      textAlign: "left"
+                      textAlign: "left",
+                      minWidth: 0
                     }}
                   >
-                    <span style={{ fontWeight: 800, fontSize: "0.875rem" }}>{item.label}</span>
+                    <span style={{ fontWeight: 800, fontSize: "0.875rem", wordBreak: "break-word" }}>{item.label}</span>
                     <span style={{ fontSize: "0.8rem", fontWeight: 700, color: projectType === item.id ? "#1a1a1a" : "#0055ff" }}>
                       {item.price}
                     </span>
@@ -186,7 +187,7 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               <label style={{ fontSize: "0.875rem", fontWeight: 800, color: "#1a1a1a", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>
                 2. Package Scope &amp; Tier
               </label>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.75rem" }}>
+              <div className="calc-grid-tiers" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "0.75rem" }}>
                 {[
                   { id: "standard", label: "Standard", sub: "Exact Base" },
                   { id: "growth", label: "Growth", sub: "+20% Scope" },
@@ -201,12 +202,13 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                       flexDirection: "column",
                       alignItems: "center",
                       gap: "0.2rem",
-                      padding: "0.75rem 0.5rem",
-                      textAlign: "center"
+                      padding: "0.75rem 0.35rem",
+                      textAlign: "center",
+                      minWidth: 0
                     }}
                   >
-                    <span style={{ fontWeight: 800, fontSize: "0.8125rem" }}>{item.label}</span>
-                    <span style={{ fontSize: "0.7rem", opacity: 0.8, fontWeight: 600 }}>{item.sub}</span>
+                    <span style={{ fontWeight: 800, fontSize: "0.8125rem", whiteSpace: "nowrap" }}>{item.label}</span>
+                    <span style={{ fontSize: "0.7rem", opacity: 0.8, fontWeight: 600, whiteSpace: "nowrap" }}>{item.sub}</span>
                   </button>
                 ))}
               </div>
@@ -217,7 +219,7 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               <label style={{ fontSize: "0.875rem", fontWeight: 800, color: "#1a1a1a", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>
                 3. Delivery Velocity
               </label>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
+              <div className="calc-grid-velocity" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
                 {[
                   { id: "standard", label: "Standard Agile Cadence", sub: "Standard Time" },
                   { id: "express", label: "Priority Rush (+15%)", sub: "Fast-Track Sprints" }
@@ -232,7 +234,8 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                       alignItems: "flex-start",
                       gap: "0.2rem",
                       padding: "0.75rem 1rem",
-                      textAlign: "left"
+                      textAlign: "left",
+                      minWidth: 0
                     }}
                   >
                     <span style={{ fontWeight: 800, fontSize: "0.8125rem" }}>{item.label}</span>
@@ -247,7 +250,7 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               <label style={{ fontSize: "0.875rem", fontWeight: 800, color: "#1a1a1a", display: "block", marginBottom: "0.75rem", textTransform: "uppercase" }}>
                 4. Optional Add-ons
               </label>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
+              <div className="calc-grid-addons" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
                 {Object.keys(addonPrices).map((key) => {
                   const addon = addonPrices[key];
                   return (
@@ -256,10 +259,10 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                       onClick={() => toggleAddon(key)}
                       className={`calc-addon-item ${addons[key] ? "active" : ""}`}
                     >
-                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", minWidth: 0 }}>
                         <span
                           className="material-symbols-outlined addon-check-icon"
-                          style={{ fontSize: "18px" }}
+                          style={{ fontSize: "18px", flexShrink: 0 }}
                         >
                           {addons[key] ? "check_box" : "check_box_outline_blank"}
                         </span>
@@ -267,7 +270,7 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                           {addon.label}
                         </span>
                       </div>
-                      <span className="addon-price-tag" style={{ fontSize: "0.75rem", fontWeight: 600 }}>
+                      <span className="addon-price-tag" style={{ fontSize: "0.75rem", fontWeight: 600, flexShrink: 0, marginLeft: "0.5rem" }}>
                         {addon.priceDisplay}
                       </span>
                     </div>
@@ -279,6 +282,7 @@ export default function ProjectCalculator({ onApplyEstimate }) {
 
           {/* Dynamic Readout Column */}
           <div
+            className="calc-readout-col"
             style={{
               borderRadius: "var(--radius-lg)",
               backgroundColor: "#ffffff",
@@ -288,7 +292,8 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              position: "relative"
+              position: "relative",
+              minWidth: 0
             }}
           >
             <div>
@@ -313,13 +318,15 @@ export default function ProjectCalculator({ onApplyEstimate }) {
 
               {/* Price Readout */}
               <div
+                className="calc-price-readout"
                 style={{
-                  fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
+                  fontSize: "clamp(2.25rem, 5vw, 3.5rem)",
                   fontWeight: 800,
                   fontFamily: "var(--font-display)",
                   color: "#1a1a1a",
                   letterSpacing: "-0.03em",
-                  lineHeight: 1
+                  lineHeight: 1.1,
+                  wordBreak: "break-word"
                 }}
               >
                 ₹{totalEstimate.toLocaleString('en-IN')}
@@ -333,14 +340,15 @@ export default function ProjectCalculator({ onApplyEstimate }) {
               </p>
 
               {/* Output Cards */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "1.75rem" }}>
+              <div className="calc-grid-outputs" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "1.75rem" }}>
                 <div
                   style={{
                     padding: "1rem",
                     borderRadius: "var(--radius-sm)",
                     backgroundColor: "#f5f0e8",
                     border: "2px solid #1a1a1a",
-                    boxShadow: "2px 2px 0px #1a1a1a"
+                    boxShadow: "2px 2px 0px #1a1a1a",
+                    minWidth: 0
                   }}
                 >
                   <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#4a4a4a" }}>Estimated Velocity</div>
@@ -358,7 +366,8 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                     borderRadius: "var(--radius-sm)",
                     backgroundColor: "#f5f0e8",
                     border: "2px solid #1a1a1a",
-                    boxShadow: "2px 2px 0px #1a1a1a"
+                    boxShadow: "2px 2px 0px #1a1a1a",
+                    minWidth: 0
                   }}
                 >
                   <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#4a4a4a" }}>Projected Upside</div>
@@ -379,7 +388,7 @@ export default function ProjectCalculator({ onApplyEstimate }) {
                   "30-day post-launch warranty & complimentary support"
                 ].map((item, idx) => (
                   <div key={idx} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8125rem", color: "#1a1a1a" }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: "16px", color: "#1a1a1a" }}>check_circle</span>
+                    <span className="material-symbols-outlined" style={{ fontSize: "16px", color: "#1a1a1a", flexShrink: 0 }}>check_circle</span>
                     <span>{item}</span>
                   </div>
                 ))}
@@ -406,6 +415,51 @@ export default function ProjectCalculator({ onApplyEstimate }) {
       </div>
 
       <style>{`
+        @media (max-width: 768px) {
+          .calculator-container {
+            padding: 1.25rem !important;
+            gap: 1.5rem !important;
+          }
+          .calc-readout-col {
+            padding: 1.25rem !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .calc-grid-velocity {
+            grid-template-columns: 1fr !important;
+            gap: 0.5rem !important;
+          }
+          .calc-grid-addons {
+            grid-template-columns: 1fr !important;
+            gap: 0.5rem !important;
+          }
+          .calc-grid-outputs {
+            grid-template-columns: 1fr !important;
+            gap: 0.65rem !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .calculator-container {
+            padding: 1rem !important;
+            box-shadow: 4px 4px 0px #1a1a1a !important;
+          }
+          .calc-readout-col {
+            padding: 1rem !important;
+            box-shadow: 4px 4px 0px #1a1a1a !important;
+          }
+          .calc-grid-services {
+            grid-template-columns: 1fr !important;
+          }
+          .calc-select-btn {
+            padding: 0.65rem 0.75rem !important;
+          }
+          .calc-price-readout {
+            font-size: 2.1rem !important;
+          }
+        }
+
         @media (min-width: 1024px) {
           .calculator-container {
             grid-template-columns: 1.15fr 0.85fr !important;

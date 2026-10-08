@@ -36,6 +36,7 @@ export default function CaseStudyModal({ study, onClose, onSelectService }) {
       onClick={onClose}
     >
       <div
+        className="case-study-modal-card"
         style={{
           width: "100%",
           maxWidth: "800px",
@@ -114,6 +115,14 @@ export default function CaseStudyModal({ study, onClose, onSelectService }) {
           <img
             src={study.image}
             alt={study.imageAlt}
+            loading="lazy"
+            decoding="async"
+            onError={(e) => {
+              if (study.fallbackImage && !e.currentTarget.dataset.retried) {
+                e.currentTarget.dataset.retried = "true";
+                e.currentTarget.src = study.fallbackImage;
+              }
+            }}
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </div>
@@ -215,7 +224,7 @@ export default function CaseStudyModal({ study, onClose, onSelectService }) {
         </div>
 
         {/* Modal Action CTA */}
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: "1rem", paddingTop: "1rem", borderTop: "2px solid #1a1a1a" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-end", gap: "0.75rem", paddingTop: "1rem", borderTop: "2px solid #1a1a1a" }}>
           <button onClick={onClose} className="btn-secondary" style={{ padding: "0.6rem 1.25rem" }}>
             Close
           </button>
@@ -233,6 +242,15 @@ export default function CaseStudyModal({ study, onClose, onSelectService }) {
           </a>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .case-study-modal-card {
+            padding: 1.25rem !important;
+            box-shadow: 4px 4px 0px #1a1a1a !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

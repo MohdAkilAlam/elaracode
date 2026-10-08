@@ -81,7 +81,7 @@ export default function Advantage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 250px), 1fr))",
             gap: "1.5rem"
           }}
         >
@@ -184,6 +184,12 @@ export default function Advantage() {
           border-color: #22c55e !important;
           color: #22c55e !important;
           box-shadow: 2px 2px 0px #22c55e !important;
+        }
+
+        @media (max-width: 640px) {
+          .advantage-card {
+            padding: 1.25rem !important;
+          }
         }
       `}</style>
     </section>

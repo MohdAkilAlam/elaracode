@@ -96,9 +96,10 @@ export default function CaseStudies({ onSelectService }) {
 
         {/* Portfolio Cards Grid */}
         <div
+          className="case-studies-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
             gap: "2rem"
           }}
         >
@@ -129,6 +130,14 @@ export default function CaseStudies({ onSelectService }) {
                 <img
                   src={item.image}
                   alt={item.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    if (item.fallbackImage && !e.currentTarget.dataset.retried) {
+                      e.currentTarget.dataset.retried = "true";
+                      e.currentTarget.src = item.fallbackImage;
+                    }
+                  }}
                   style={{
                     width: "100%",
                     height: "100%",
@@ -261,6 +270,15 @@ export default function CaseStudies({ onSelectService }) {
         onClose={() => setSelectedStudy(null)}
         onSelectService={onSelectService}
       />
+
+      <style>{`
+        @media (max-width: 640px) {
+          .case-studies-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -352,17 +352,24 @@ export default function Hero() {
                     border: "2px solid #1a1a1a"
                   }}
                 >
-                  <img
-                    src="/hero-showcase.jpg"
-                    alt="Elaracode digital engineering, modern web dev, UI/UX layers, and SEO analytics"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                      transition: "transform 0.4s ease"
-                    }}
-                  />
+                  <picture>
+                    <source srcSet="/hero-showcase.webp" type="image/webp" />
+                    <img
+                      src="/hero-showcase.jpg"
+                      alt="Elaracode digital engineering, modern web dev, UI/UX layers, and SEO analytics"
+                      width="1376"
+                      height="768"
+                      fetchPriority="high"
+                      decoding="async"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                        transition: "transform 0.4s ease"
+                      }}
+                    />
+                  </picture>
                 </div>
 
                 {/* Window Footer Status */}
@@ -445,8 +452,18 @@ export default function Hero() {
           }
         }
         @media (max-width: 640px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.25rem !important;
+          }
           .proof-points-grid {
             grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.75rem !important;
+          }
+          .badge-bubble-float-1,
+          .badge-bubble-float-2 {
+            font-size: 0.7rem !important;
+            padding: 0.35rem 0.65rem !important;
           }
         }
         @media (min-width: 1024px) {

@@ -16,7 +16,7 @@ export default function Testimonials() {
         className="review-card"
         style={{
           width: "380px",
-          minWidth: "320px",
+          minWidth: "280px",
           maxWidth: "420px",
           flexShrink: 0,
           borderRadius: "var(--radius-lg)",
@@ -265,7 +265,8 @@ export default function Testimonials() {
           }
           .review-card {
             width: 290px !important;
-            padding: 1.5rem !important;
+            min-width: 0 !important;
+            padding: 1.25rem !important;
           }
         }
       `}</style>

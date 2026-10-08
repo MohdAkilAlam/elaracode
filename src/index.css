@@ -245,6 +245,13 @@ h1, h2, h3, h4, h5, h6, .font-display {
   padding-right: 1.5rem;
 }
 
+@media (max-width: 640px) {
+  .container-custom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 @media (min-width: 1536px) {
   .container-custom {
     max-width: 1400px;
